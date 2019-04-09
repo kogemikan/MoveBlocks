@@ -1,0 +1,4 @@
+main: com.gmail.kogemikan1101.mvBlocks.MoveBlocksPlugin
+name: MoveBlocks
+version: 0.0.1
+softdepend: [WorldEdit, FastAsyncWorldEdit]
