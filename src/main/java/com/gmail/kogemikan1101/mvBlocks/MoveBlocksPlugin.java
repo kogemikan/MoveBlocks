@@ -12,7 +12,7 @@ import java.util.List;
  */
 public class MoveBlocksPlugin extends JavaPlugin {
 
-    private static final MoveBlocksCommand PLUGIN_COMMAND = new MoveBlocksCommand();
+    private MoveBlocksCommand pluginCommand;
 
     @Override
     public void onDisable() {
@@ -21,16 +21,17 @@ public class MoveBlocksPlugin extends JavaPlugin {
 
     @Override
     public void onEnable() {
+        pluginCommand = new MoveBlocksCommand();
         super.onEnable();
     }
 
     @Override
     public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
-        return PLUGIN_COMMAND.onCommand(sender, command, label, args);
+        return pluginCommand.onCommand(sender, command, label, args);
     }
 
     @Override
     public List<String> onTabComplete(CommandSender sender, Command command, String alias, String[] args) {
-        return PLUGIN_COMMAND.onTabComplete(sender, command, alias, args);
+        return pluginCommand.onTabComplete(sender, command, alias, args);
     }
 }

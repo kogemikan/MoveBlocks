@@ -2,11 +2,16 @@ package com.gmail.kogemikan1101.mvBlocks.command;
 
 import org.bukkit.command.CommandSender;
 
+/**
+ * createコマンド実行クラス
+ * @author kogemikan
+ */
 /*
 動かすブロックを登録するためのコマンド
  */
 public class CreateCommand implements MoveBlocksSubCommand {
     private static final String COMMAND_NAME = "create";
+    private static final String PERMISSION_NODE = "mvblocks." + COMMAND_NAME;
 
     /**
      * コマンド名を取得する
@@ -25,7 +30,7 @@ public class CreateCommand implements MoveBlocksSubCommand {
      */
     @Override
     public String getPermissionNode() {
-        return null;
+        return PERMISSION_NODE;
     }
 
     /**

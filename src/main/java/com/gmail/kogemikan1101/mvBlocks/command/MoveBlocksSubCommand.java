@@ -2,8 +2,12 @@ package com.gmail.kogemikan1101.mvBlocks.command;
 
 import org.bukkit.command.CommandSender;
 
+/**
+ * サブコマンドのインターフェイス
+ * @author kogemikan
+ */
 /*
-プラグインのコマンド用インターフェース
+    プラグインのコマンド用インターフェイス
  */
 public interface MoveBlocksSubCommand {
 
@@ -11,13 +15,13 @@ public interface MoveBlocksSubCommand {
      * コマンド名を取得する
      * @return コマンド名
      */
-    public abstract String getCommandName();
+    String getCommandName();
 
     /**
      * パーミッションノードを取得する
      * @return パーミッションノード
      */
-    public abstract String getPermissionNode();
+    String getPermissionNode();
 
     /**
      * コマンドを実行する
@@ -26,6 +30,6 @@ public interface MoveBlocksSubCommand {
      * @param args コマンドの引数
      * @return コマンド実行が為されたかどうか
      */
-    public abstract boolean executeCommand(CommandSender sender, String label, String args[]);
+    boolean executeCommand(CommandSender sender, String label, String args[]);
 
 }
