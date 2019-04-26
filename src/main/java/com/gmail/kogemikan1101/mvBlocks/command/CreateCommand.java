@@ -8,6 +8,8 @@ import org.bukkit.command.CommandSender;
  */
 /*
 動かすブロックを登録するためのコマンド
+    /mvb create [Structure Name] [Mode]
+    選択中のブロックを任意の名前で登録します。
  */
 public class CreateCommand implements MoveBlocksSubCommand {
     private static final String COMMAND_NAME = "create";
