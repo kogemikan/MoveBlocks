@@ -1,5 +1,6 @@
 package com.gmail.kogemikan1101.mvBlocks.command;
 
+import org.bukkit.ChatColor;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
 import org.bukkit.command.TabExecutor;
@@ -34,7 +35,8 @@ public class MoveBlocksCommand implements TabExecutor {
 
                     //コマンドパーミッションの確認
                     if(!sender.hasPermission(cmd.getPermissionNode())) {
-                        //パーミッションがなかった時の処理
+                        //パーミッションを持ってなかった時の処理
+                        sender.sendMessage(ChatColor.RED + "コマンドを実行するためのパーミッションを持っていません。");
                     }
                     //サブコマンド処理
                     return cmd.executeCommand(sender, label, args);
