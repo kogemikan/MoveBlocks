@@ -37,6 +37,7 @@ public class MoveBlocksCommand implements TabExecutor {
                     if(!sender.hasPermission(cmd.getPermissionNode())) {
                         //パーミッションを持ってなかった時の処理
                         sender.sendMessage(ChatColor.RED + "コマンドを実行するためのパーミッションを持っていません。");
+                        return true;
                     }
                     //サブコマンド処理
                     return cmd.executeCommand(sender, label, args);
