@@ -3,6 +3,7 @@ package com.gmail.kogemikan1101.mvBlocks.util;
 import com.sk89q.worldedit.LocalSession;
 import com.sk89q.worldedit.bukkit.BukkitPlayer;
 import com.sk89q.worldedit.bukkit.WorldEditPlugin;
+import com.sk89q.worldedit.bukkit.selections.Selection;
 import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
 import org.bukkit.plugin.Plugin;
@@ -48,6 +49,20 @@ public class WorldEditUtilities {
             final WorldEditPlugin wePlugin = getWorldEditPlugin();
             if (wePlugin != null) {
                 return wePlugin.getSession(player);
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
+
+    @Nullable
+    public static Selection getPlayerSelection(Player player) {
+
+        try {
+            final WorldEditPlugin wePlugin = getWorldEditPlugin();
+            if (wePlugin != null) {
+                return wePlugin.getSelection(player);
             }
         } catch (Exception e) {
             e.printStackTrace();

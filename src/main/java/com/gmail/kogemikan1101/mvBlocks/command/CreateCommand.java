@@ -1,5 +1,7 @@
 package com.gmail.kogemikan1101.mvBlocks.command;
 
+import com.gmail.kogemikan1101.mvBlocks.util.WorldEditUtilities;
+import com.sk89q.worldedit.bukkit.selections.Selection;
 import org.bukkit.ChatColor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
@@ -56,8 +58,21 @@ public class CreateCommand implements MoveBlocksSubCommand {
         //一時的な名前で登録する
         if(args.length == 1) {
             //WorldEditから実行者が選択している範囲を取得する
+            Selection selection = WorldEditUtilities.getPlayerSelection((Player)sender);
             //情報が不完全な場合はコマンド実行失敗
+            if(selection == null) {
+                sender.sendMessage(ChatColor.RED + "エリアを選択していません");
+                return true;
+            }
             //範囲が大きすぎる、小さすぎる場合はコマンド実行失敗
+            if(selection.getArea() <= 0) {
+                sender.sendMessage(ChatColor.RED + "選択範囲が狭すぎます");
+                return true;
+            }
+            if(selection.getArea() > 100) {
+                sender.sendMessage(ChatColor.RED + "選択範囲が広すぎます");
+                return true;
+            }
             //範囲のブロックの情報を取得する
             //コンフィグファイルに一時的な名前"tmp"で保存する
 
