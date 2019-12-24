@@ -1,10 +1,17 @@
 package com.gmail.kogemikan1101.mvBlocks.command;
 
+import com.gmail.kogemikan1101.mvBlocks.blocks.BlockData;
 import com.gmail.kogemikan1101.mvBlocks.util.WorldEditUtilities;
+import com.sk89q.worldedit.Vector;
 import com.sk89q.worldedit.bukkit.selections.Selection;
 import org.bukkit.ChatColor;
+import org.bukkit.Location;
+import org.bukkit.block.Block;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
+
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * createコマンド実行クラス
@@ -74,6 +81,16 @@ public class CreateCommand implements MoveBlocksSubCommand {
                 return true;
             }
             //範囲のブロックの情報を取得する
+            Vector min = selection.getNativeMinimumPoint();
+            Vector max = selection.getNativeMaximumPoint();
+            List<Block> blocks = new ArrayList<>();
+            for(int x = min.getBlockX(); x <= max.getBlockX(); x++)
+                for(int y = min.getBlockY(); y <= max.getBlockY(); y++)
+                    for(int z = min.getBlockZ(); z <= max.getBlockZ(); z++){
+                        Location loc = new Location(((Player) sender).getWorld(),x,y,z);
+                        blocks.add(loc.getBlock());
+                    }
+            BlockData data = new BlockData(blocks, min, max);
             //コンフィグファイルに一時的な名前"tmp"で保存する
 
             //正常終了
